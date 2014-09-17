@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取每一帧</title>
+    <script src="http://chenllos.com/util/jquery-1.8.3.js"></script>
+    <style>
+        .f{
+            text-align: center;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <video src="media/Social Network - In Theaters.mp4" controls width="320" height="180"></video>
+    <br>
+    <br>
+    <br>
+
+    <script>
+        var doc = document.body;
+        var video = $('video').get(0);
+
+        var W = 320*1.5, H = 180*1.5;
+
+        var start = null;
+        function renderFrame(){
+            var div = document.createElement('div');
+            div.setAttribute('class', 'f');
+            var canvas = document.createElement('canvas');
+            canvas.width = W;
+            canvas.height = H;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0,0,1280,720, 0,0,W,H);
+            div.appendChild(canvas);
+            var p = document.createElement('p');
+            p.innerHTML = Date.now() - start;
+            div.appendChild(p);
+            doc.appendChild(div);
+        }
+
+        var timer = null;
+        video.addEventListener('play', function(){
+            if(!start){
+                start = Date.now();
+            }
+            else{
+                // cur - (start + pauseSpend)
+                pauseEnd = Date.now();
+                start = start + (pauseEnd - pauseTime);
+            }
+            $('.f').remove();
+            timer = setInterval(renderFrame, 100);
+        });
+
+        var pauseTime = null, pauseEnd = null;
+        video.addEventListener('pause', function(){
+            clearInterval(timer);
+            pauseTime = Date.now();
+        })
+
+    </script>
+</body>
+</html>

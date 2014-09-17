@@ -1,0 +1,223 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Avenir';
+    line-height: 1.5;
+}
+*{
+    box-sizing: border-box;
+}
+
+.tst(@v: all 300ms ease){
+    -webkit-transition: @v;
+    -moz-transition: @v;
+    -ms-transition: @v;
+    --transition: @v;
+}
+@avatarW: 60px;
+
+
+
+#msg-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    .msg-item{
+        margin-bottom: 1.5em;
+
+        &.msg-item-enter{
+            opacity: 0.2;
+            .tst(opacity 200ms ease;);
+
+            &.msg-item-enter-active{
+                opacity: 1;
+            }
+        }
+        &.msg-item-leave{
+            opacity: 1;
+            .tst(opacity 200ms ease;);
+
+            &.msg-item-enter-active{
+                opacity: 0;
+            }
+        }
+
+        .avatar{
+            float: left;
+            width: @avatarW;
+            height: @avatarW;
+            margin-right: 0.75em;
+        }
+        .msg-content{
+            overflow: hidden;
+            min-height: 60px;
+        }
+        .msg-user-name{
+            margin-right: 0.5em;
+            color: lighten(#3b5998, 10%);
+            font-weight: bold;
+
+            &:after{
+                content: ':';
+            }
+        }
+        .msg-text{
+            
+        }
+    }
+}
+
+
+
+
+@pLR: 20px;
+@pTB: 50px;
+.wrapper{
+    position: relative;
+    padding: @pTB @pLR;
+    overflow: hidden;
+    background-color: #000;
+
+    @dur: 1200ms;
+    #msg-module{
+        width: @avatarW*8;
+        height: 300px;
+        padding: 0 @avatarW;
+        background-color: #DCDBE1;
+        overflow: hidden;
+
+        .tst(opacity @dur ease, bottom 0ms ease @dur;);
+        opacity: 1;
+
+        &.hidden{
+            opacity: 0;
+        }
+    }
+    .msg-header{
+        .status-header{
+            padding: 0.5em 0 0 0;
+            margin-right: -@avatarW;
+            border-bottom: 1px solid #ccc;
+
+            &:after{
+                content: '';
+                display: table;
+                clear: both;
+            }
+        }
+        .status-title{
+            float: left;
+            margin: 0;
+            // font-weight: bold;
+            font-size: 1.25em;
+            color: #333;
+            text-decoration: none;
+
+
+            .icon{
+                position: relative;
+                top: 2px;
+                margin-right: 0.25em;
+            }
+        }
+
+        .add-update{
+            float: right;
+            margin-right: -0.5em;
+        }
+    }
+
+    .movie-title{
+        margin: 150px auto 0 auto;
+        line-height: 50px;
+        width: 255px;
+        // font-family: 'Heiti SC Medium';
+        font-weight: bold;
+        text-align: center;
+        // padding: 0 1.5em;
+        // background-color: #395175;
+        color: #fff;
+        background-image: linear-gradient(to right, #395175, lighten(#52688A, 10%), #395175);
+        opacity: 0.9;
+
+        .tst(all 50ms ease);
+        opacity: 1;
+        // -webkit-transform: scale(1);
+        // transform: scale(1);
+
+        &.hidden{
+            opacity: 0;
+            // transform: scale(0.95);
+        }
+    }
+}
+
+
+.simulate-video{
+    width: 800px;
+    margin: 60px auto 0 auto;
+
+    .wrapper,
+    audio{
+        display: block;
+        width: 2*@pLR + @avatarW*8;
+        margin: 0 auto;
+        background: #000;
+        // chrome下audio控制条的高度
+        margin-top: -30px;
+    }
+}
+
+
+.mask{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #000;
+    
+    .tst(opacity 200ms ease, bottom 0ms ease 200ms;);
+    bottom: 0;
+    opacity: 1;
+
+    &.hidden{
+        bottom: 100%;
+        opacity: 0;
+    }
+}
+.middle-dot{
+    position: relative;
+    top: -0.3em;
+    margin: 0 0.5em;
+}
+.link-group{
+    color: #38599c;
+}
+.fb-link{
+    color: #38599c;
+    text-decoration: none;
+}
+.icon{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    background-image: url('../../img/icons.png');
+    cursor: pointer;
+    // background-size: 100%;
+
+    &.icon-people{
+        background-position: 0 -171px;
+    }
+}
+.btn{
+    display: inline-block;
+    line-height: 1.5;
+    padding: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #DDDBDD;
+    cursor: pointer;
+}
+
