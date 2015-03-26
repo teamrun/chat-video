@@ -1,0 +1,38 @@
+{
+  "name": "chat-video",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack js/app.js js/bundle.js -w -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/teamrun/chat-video.git"
+  },
+  "keywords": [
+    "react",
+    "build",
+    "chat",
+    "video"
+  ],
+  "author": "teamrun",
+  "license": "mit",
+  "bugs": {
+    "url": "https://github.com/teamrun/chat-video/issues"
+  },
+  "homepage": "https://github.com/teamrun/chat-video",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "gulp": "^3.8.11",
+    "gulp-less": "^3.0.1",
+    "gulp-plumber": "^1.0.0",
+    "gulp-util": "^3.0.4",
+    "keymirror": "^0.1.1",
+    "object-assign": "^2.0.0"
+  }
+}
